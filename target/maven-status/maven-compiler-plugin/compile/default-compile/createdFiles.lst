@@ -1,0 +1,2 @@
+com\softwaholic\keycloak\auth\EmailTenantAuthenticatorFactory.class
+com\softwaholic\keycloak\auth\EmailTenantAuthenticator.class

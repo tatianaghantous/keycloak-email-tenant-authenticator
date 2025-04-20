@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.softwaholic.keycloak.auth</groupId>
+  <artifactId>email-tenant-authenticator</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>email-tenant-authenticator</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <keycloak.version>26.0.0</keycloak.version>
+  </properties>
+
+  <dependencies>
+    <!-- Keycloak SPI -->
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>    
+
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-server-spi</artifactId>
+      <version>${keycloak.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-server-spi-private</artifactId>
+      <version>${keycloak.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.keycloak</groupId>
+        <artifactId>keycloak-core</artifactId>
+        <version>${keycloak.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.keycloak</groupId>
+        <artifactId>keycloak-services</artifactId>
+        <version>${keycloak.version}</version>
+    </dependency>
+  </dependencies>
+
+<build>
+  <resources>
+    <resource>
+      <directory>src/main/resources</directory>
+      <includes>
+        <include>META-INF/services/org.keycloak.authentication.AuthenticatorFactory</include>
+      </includes>
+    </resource>
+  </resources>
+  <finalName>email-tenant-authenticator</finalName>
+  <plugins>
+    <plugin>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.10.1</version>
+      <configuration>
+        <source>${maven.compiler.source}</source>
+        <target>${maven.compiler.target}</target>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
+</project>
